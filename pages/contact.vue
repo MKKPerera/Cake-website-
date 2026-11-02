@@ -127,9 +127,40 @@
 </template>
 
 <script setup>
+// ── SEO: Contact Page ─────────────────────────────────────────────────────────
+useSeo({
+  title: 'Order a Custom Cake — Contact Us',
+  description: 'Order your dream custom cake from Sweet Dreams Bakery London. Wedding cakes, birthday cakes & more. Get a free quote — we respond within 24 hours.',
+  path: '/contact',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=630&fit=crop',
+  keywords: 'order custom cake London, cake order form, wedding cake quote, birthday cake order, custom cake delivery London',
+})
+
+// ── Schema.org: BreadcrumbList + ContactPage ──────────────────────────────────
 useHead({
-  title: 'Contact & Order — Sweet Dreams Bakery',
-  meta: [{ name: 'description', content: 'Order a custom cake from Sweet Dreams Bakery. Get in touch for weddings, birthdays, and all special occasions.' }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cake-website-tau.vercel.app/' },
+          { '@type': 'ListItem', position: 2, name: 'Contact', item: 'https://cake-website-tau.vercel.app/contact' },
+        ],
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Order a Custom Cake',
+        url: 'https://cake-website-tau.vercel.app/contact',
+        description: 'Order a custom cake from Sweet Dreams Bakery London.',
+      }),
+    },
+  ],
 })
 
 const submitted = ref(false)

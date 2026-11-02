@@ -105,9 +105,30 @@
 </template>
 
 <script setup>
+// ── SEO: About Page ───────────────────────────────────────────────────────────
+useSeo({
+  title: 'About Us — Our Story & Team',
+  description: 'Meet the team behind Sweet Dreams Bakery — a family-run London bakery crafting custom cakes since 2014. Passion, quality, and love in every slice.',
+  path: '/about',
+  image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=630&fit=crop',
+  keywords: 'about Sweet Dreams Bakery, London bakery team, family bakery London, custom cake makers, award winning bakery London',
+})
+
+// ── Schema.org: BreadcrumbList ────────────────────────────────────────────────
 useHead({
-  title: 'About Us — Sweet Dreams Bakery',
-  meta: [{ name: 'description', content: 'Learn about the story behind Sweet Dreams Bakery — a family-run bakery crafting custom cakes in London since 2014.' }],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://cake-website-tau.vercel.app/' },
+          { '@type': 'ListItem', position: 2, name: 'About Us', item: 'https://cake-website-tau.vercel.app/about' },
+        ],
+      }),
+    },
+  ],
 })
 
 const values = [

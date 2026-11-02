@@ -139,8 +139,60 @@
 </template>
 
 <script setup>
+// ── SEO: Home Page ────────────────────────────────────────────────────────────
+useSeo({
+  title: 'Custom Cakes London — Weddings, Birthdays & More',
+  description: 'Sweet Dreams Bakery crafts stunning custom cakes in London for weddings, birthdays, anniversaries & every occasion. Order online, free delivery.',
+  path: '/',
+  keywords: 'custom cakes London, wedding cake London, birthday cake delivery, cake shop London, handcrafted cakes, fondant cake, chocolate drip cake',
+})
+
+// ── Schema.org: LocalBusiness + Bakery (helps Google show rich results) ───────
 useHead({
-  title: 'Sweet Dreams Bakery — Custom Cakes for Every Occasion',
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': ['Bakery', 'LocalBusiness'],
+        name: 'Sweet Dreams Bakery',
+        description: 'Handcrafted custom cakes for weddings, birthdays and every occasion in London.',
+        url: 'https://cake-website-tau.vercel.app',
+        logo: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=200&fit=crop',
+        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&h=630&fit=crop',
+        telephone: '+44-20-1234-5678',
+        email: 'hello@sweetdreamsbakery.com',
+        priceRange: '$$',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '123 Baker Street',
+          addressLocality: 'London',
+          addressRegion: 'England',
+          postalCode: 'W1U 6TY',
+          addressCountry: 'GB',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 51.5237,
+          longitude: -0.1586,
+        },
+        openingHoursSpecification: [
+          { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '08:00', closes: '19:00' },
+          { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '09:00', closes: '18:00' },
+        ],
+        sameAs: [
+          'https://github.com/MKKPerera/Cake-website-',
+        ],
+        hasMap: 'https://maps.google.com/?q=123+Baker+Street+London',
+        servesCuisine: 'Cakes and Pastries',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '127',
+        },
+      }),
+    },
+  ],
 })
 
 const cakes = [
