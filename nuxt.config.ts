@@ -53,6 +53,24 @@ export default defineNuxtConfig({
         // Sitemap
         { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' },
       ],
+
+      // ── Google Analytics GA4 — tracks all pages automatically ───────────────
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-0MNBYZ4BNN',
+          async: true,
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0MNBYZ4BNN', {
+              page_path: window.location.pathname,
+            });
+          `,
+        },
+      ],
     },
   },
 })
