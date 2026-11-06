@@ -54,10 +54,10 @@ export default defineNuxtConfig({
         { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' },
       ],
 
-      // ── Google Analytics GA4 — tracks all pages automatically ───────────────
+      // ── Google Tag Manager — tracks all pages automatically ─────────────────
       script: [
         {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-0MNBYZ4BNN',
+          src: 'https://www.googletagmanager.com/gtm.js?id=GTM-N54727VJ',
           async: true,
         },
         {
@@ -65,9 +65,6 @@ export default defineNuxtConfig({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-0MNBYZ4BNN', {
-              page_path: window.location.pathname,
-            });
           `,
         },
       ],
